@@ -12,10 +12,10 @@ function Gameboard() {
   const getBoard = () => board;
 
   const dropToken = (board = board, row, column, player) => {
-    if (!board[row][column]) {
-      board[row][column].addToken(player);
-    } else {
+    if (board[row][column] === 3) {
       console.log("This cell is occupied");
+    } else {
+      board[row][column].addToken(player);
     }
   };
 
@@ -28,7 +28,7 @@ function Gameboard() {
 }
 
 function Cell() {
-  let value = " ";
+  let value = 3;
 
   const addToken = (player) => {
     value = player;
@@ -48,11 +48,11 @@ function GameController(playerOne = "Player One", playerTwo = "Player Two") {
   const players = [
     {
       name: playerOne,
-      token: 1,
+      token: "Y",
     },
     {
       name: playerTwo,
-      token: 2,
+      token: "N",
     },
   ];
 
