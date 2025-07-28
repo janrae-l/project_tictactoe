@@ -11,8 +11,9 @@ function Gameboard() {
   }
   const getBoard = () => board;
 
-  const dropToken = (board = board, row, column, player) => {
-    if (board[row][column] === 3) {
+  const dropToken = (row, column, player) => {
+    //I need to fix the logic here
+    if (board[row][column] === "N" || board[row][column] === "Y") {
       console.log("This cell is occupied");
     } else {
       board[row][column].addToken(player);
