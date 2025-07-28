@@ -11,16 +11,24 @@ function Gameboard() {
   }
   const getBoard = () => board;
 
+  const dropToken = (board = board, row, column, player) => {
+    if (!board[row][column]) {
+      board[row][column].addToken(player);
+    } else {
+      console.log("This cell is occupied");
+    }
+  };
+
   const printBoard = () => {
     const testBoard = board.map((row) => row.map((cell) => cell.getValue()));
     console.log(testBoard);
   };
 
-  return { getBoard, printBoard };
+  return { getBoard, dropToken, printBoard };
 }
 
 function Cell() {
-  let value = 1;
+  let value = " ";
 
   const addToken = (player) => {
     value = player;
@@ -33,10 +41,6 @@ function Cell() {
     getValue,
   };
 }
-
-const game = Gameboard();
-game.getBoard();
-game.printBoard();
 
 function GameController(playerOne = "Player One", playerTwo = "Player Two") {
   const board = Gameboard();
@@ -71,6 +75,7 @@ function GameController(playerOne = "Player One", playerTwo = "Player Two") {
         getActivePlayer().name
       }'s token into row ${row}, column ${column}`
     );
+
     board.dropToken(row, column, getActivePlayer().token);
 
     switchPlayer();
@@ -82,5 +87,16 @@ function GameController(playerOne = "Player One", playerTwo = "Player Two") {
   return {
     playRound,
     getActivePlayer,
+    getBoard: board.getBoard,
   };
 }
+
+function consoleTest() {
+  const game = GameController();
+  const row = Number(prompt("What row are you going to pick? (0, 1, 2)"));
+  const column = Number(prompt("What column are you going to pick? (0, 1, 2)"));
+  game.getActivePlayer();
+  game.playRound(row, column);
+}
+
+consoleTest();
