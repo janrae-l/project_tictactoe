@@ -13,7 +13,12 @@ function Gameboard() {
 
   const dropToken = (row, column, player) => {
     //I need to fix the logic here
-    if (board[row][column] === "N" || board[row][column] === "Y") {
+    // for (let i=0;i < rows; i++) {
+    //   if (i === row) {
+
+    //   }
+    // }
+    if (board[row][column] === "X" || board[row][column] === "O") {
       console.log("This cell is occupied");
     } else {
       board[row][column].addToken(player);
@@ -49,11 +54,11 @@ function GameController(playerOne = "Player One", playerTwo = "Player Two") {
   const players = [
     {
       name: playerOne,
-      token: "Y",
+      token: "X",
     },
     {
       name: playerTwo,
-      token: "N",
+      token: "O",
     },
   ];
 
