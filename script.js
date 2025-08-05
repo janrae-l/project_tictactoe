@@ -75,6 +75,20 @@ function GameController(playerOne = "Player One", playerTwo = "Player Two") {
     console.log(`${getActivePlayer().name}'s turn`);
   };
 
+  const patternArr = () => {
+    let pattern = [];
+
+    for (let i = 0; i < board.length - 1; i++) {
+      for (let j = 0; j < i.length - 1; j++) {
+        pattern.push(j.getValue());
+      }
+    }
+
+    console.log(pattern);
+  };
+
+  const winningPattern = (board) => {};
+
   const playRound = (row, column) => {
     console.log(
       `Dropping ${
@@ -84,6 +98,7 @@ function GameController(playerOne = "Player One", playerTwo = "Player Two") {
 
     board.dropToken(row, column, getActivePlayer().token);
 
+    patternArr();
     switchPlayer();
     printNewRound();
   };
@@ -97,12 +112,10 @@ function GameController(playerOne = "Player One", playerTwo = "Player Two") {
   };
 }
 
-function consoleTest() {
+const consoleTest = (function () {
   const game = GameController();
   const row = Number(prompt("What row are you going to pick? (0, 1, 2)"));
   const column = Number(prompt("What column are you going to pick? (0, 1, 2)"));
   game.getActivePlayer();
   game.playRound(row, column);
-}
-
-consoleTest();
+})();
