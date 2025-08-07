@@ -30,7 +30,25 @@ function Gameboard() {
     console.log(testBoard);
   };
 
-  return { getBoard, dropToken, printBoard };
+  //Access each value of the board and then push it into another array where you can check the length for the loop,
+  //or ask user if they still want to play the game?? but it defeats the purpose of the game to be played
+
+  const patternArr = () => {
+    let pattern = [];
+
+    ///it needs to get inside the testboard to get the array for the pattern
+    // for (let i = 0; i < testboard.length; i++) {
+    //   console.log(i, i.length);
+    //   for (let j = 0; j < i.length; j++) {
+    //     pattern.push(j.getValue());
+    //   }
+    // }
+
+    console.log(pattern);
+    return pattern;
+  };
+
+  return { getBoard, dropToken, printBoard, patternArr };
 }
 
 function Cell() {
@@ -75,18 +93,6 @@ function GameController(playerOne = "Player One", playerTwo = "Player Two") {
     console.log(`${getActivePlayer().name}'s turn`);
   };
 
-  const patternArr = () => {
-    let pattern = [];
-
-    for (let i = 0; i < board.length - 1; i++) {
-      for (let j = 0; j < i.length - 1; j++) {
-        pattern.push(j.getValue());
-      }
-    }
-
-    console.log(pattern);
-  };
-
   const winningPattern = (board) => {};
 
   const playRound = (row, column) => {
@@ -98,7 +104,7 @@ function GameController(playerOne = "Player One", playerTwo = "Player Two") {
 
     board.dropToken(row, column, getActivePlayer().token);
 
-    patternArr();
+    board.patternArr();
     switchPlayer();
     printNewRound();
   };
