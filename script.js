@@ -37,12 +37,12 @@ function Gameboard() {
     let pattern = [];
 
     ///it needs to get inside the testboard to get the array for the pattern
-    // for (let i = 0; i < testboard.length; i++) {
-    //   console.log(i, i.length);
-    //   for (let j = 0; j < i.length; j++) {
-    //     pattern.push(j.getValue());
-    //   }
-    // }
+    for (let i = 0; i < board.length; i++) {
+      console.log(board[i]);
+      for (let j = 0; j < board[i].length; j++) {
+        pattern.push(board[i][j].getValue());
+      }
+    }
 
     console.log(pattern);
     return pattern;
