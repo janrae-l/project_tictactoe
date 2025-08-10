@@ -48,7 +48,7 @@ function Gameboard() {
     return pattern;
   };
 
-  return { getBoard, dropToken, printBoard, patternArr };
+  return { getBoard, dropToken, printBoard, patternArr, counterFunc };
 }
 
 function Cell() {
@@ -95,6 +95,18 @@ function GameController(playerOne = "Player One", playerTwo = "Player Two") {
 
   const winningPattern = (board) => {};
 
+  const counterFunc = (board) => {
+    let counter = 0;
+
+    for (let i = 0; i < board.length; i++) {
+      if (board[i] === 3) {
+        counter++;
+      }
+    }
+    console.log(counter);
+    return counter;
+  };
+
   const playRound = (row, column) => {
     console.log(
       `Dropping ${
@@ -118,10 +130,34 @@ function GameController(playerOne = "Player One", playerTwo = "Player Two") {
   };
 }
 
+const counterFunc = (board) => {
+  const board = Gameboard();
+
+  let counter = 0;
+
+  for (let i = 0; i < board.length; i++) {
+    if (board[i] === 3) {
+      counter++;
+    }
+  }
+  console.log(counter);
+  return counter;
+};
+
 const consoleTest = (function () {
   const game = GameController();
-  const row = Number(prompt("What row are you going to pick? (0, 1, 2)"));
-  const column = Number(prompt("What column are you going to pick? (0, 1, 2)"));
-  game.getActivePlayer();
-  game.playRound(row, column);
+  const counter = game.counterFunc();
+
+  const gameLoop = (counter) => {
+    while (counter < 9) {
+      const row = Number(prompt("What row are you going to pick? (0, 1, 2)"));
+      const column = Number(
+        prompt("What column are you going to pick? (0, 1, 2)")
+      );
+      game.getActivePlayer();
+      game.playRound(row, column);
+      console.log(counter);
+    }
+  };
+  gameLoop(counter);
 })();
