@@ -48,7 +48,7 @@ function Gameboard() {
     return pattern;
   };
 
-  return { getBoard, dropToken, printBoard, patternArr, counterFunc };
+  return { getBoard, dropToken, printBoard, patternArr };
 }
 
 function Cell() {
@@ -95,11 +95,11 @@ function GameController(playerOne = "Player One", playerTwo = "Player Two") {
 
   const winningPattern = (board) => {};
 
-  const counterFunc = (board) => {
+  const counterFunc = (arr) => {
     let counter = 0;
 
-    for (let i = 0; i < board.length; i++) {
-      if (board[i] === 3) {
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] === 3) {
         counter++;
       }
     }
@@ -120,29 +120,16 @@ function GameController(playerOne = "Player One", playerTwo = "Player Two") {
     switchPlayer();
     printNewRound();
   };
-
+  counterFunc(board.patternArr());
   printNewRound();
 
   return {
     playRound,
     getActivePlayer,
     getBoard: board.getBoard,
+    counterFunc,
   };
 }
-
-const counterFunc = (board) => {
-  const board = Gameboard();
-
-  let counter = 0;
-
-  for (let i = 0; i < board.length; i++) {
-    if (board[i] === 3) {
-      counter++;
-    }
-  }
-  console.log(counter);
-  return counter;
-};
 
 const consoleTest = (function () {
   const game = GameController();
