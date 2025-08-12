@@ -19,6 +19,7 @@ function Gameboard() {
     //   }
     // }
     if (board[row][column] === "X" || board[row][column] === "O") {
+      //this needs to be revised
       console.log("This cell is occupied");
     } else {
       board[row][column].addToken(player);
@@ -95,18 +96,6 @@ function GameController(playerOne = "Player One", playerTwo = "Player Two") {
 
   const winningPattern = (board) => {};
 
-  const counterFunc = (arr) => {
-    let counter = 0;
-
-    for (let i = 0; i < arr.length; i++) {
-      if (arr[i] === 3) {
-        counter++;
-      }
-    }
-    console.log(counter);
-    return counter;
-  };
-
   const playRound = (row, column) => {
     console.log(
       `Dropping ${
@@ -120,31 +109,53 @@ function GameController(playerOne = "Player One", playerTwo = "Player Two") {
     switchPlayer();
     printNewRound();
   };
-  counterFunc(board.patternArr());
+
   printNewRound();
 
   return {
     playRound,
     getActivePlayer,
     getBoard: board.getBoard,
-    counterFunc,
   };
 }
 
 const consoleTest = (function () {
+  const board = Gameboard();
+  const playingBoard = board.patternArr();
   const game = GameController();
-  const counter = game.counterFunc();
+
+  const counterFunc = (arr) => {
+    let counter = 0;
+    let tokenCounter = 0;
+
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] === 3) {
+        counter++;
+      } else {
+        tokenCounter++;
+      }
+    }
+    console.log(counter);
+    return { counter, tokenCounter };
+  };
+
+  let counter = counterFunc.counter;
+  let tokenCounter = counterFunc.tokenCounter;
+
+  //this needs to be thought out more because it is an infinite loop now
+  let verdict = counter > tokenCounter ? true : false;
 
   const gameLoop = (counter) => {
-    while (counter < 9) {
+    while (counter) {
       const row = Number(prompt("What row are you going to pick? (0, 1, 2)"));
       const column = Number(
         prompt("What column are you going to pick? (0, 1, 2)")
       );
       game.getActivePlayer();
       game.playRound(row, column);
+      counter;
       console.log(counter);
     }
   };
-  gameLoop(counter);
+  gameLoop(verdict);
 })();
