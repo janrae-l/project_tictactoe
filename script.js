@@ -127,34 +127,38 @@ function GameController(playerOne = "Player One", playerTwo = "Player Two") {
 
     board.dropToken(row, column, getActivePlayer().token);
 
-    board.patternArr();
-    let { counter, tokenCounter } = counterFunc(board.patternArr());
-    let verdict = counter > tokenCounter ? true : false;
+    // board.patternArr();
 
-    const gameLoop = (counter) => {
-      while (counter) {
-        const row = Number(prompt("What row are you going to pick? (0, 1, 2)"));
-        const column = Number(
-          prompt("What column are you going to pick? (0, 1, 2)")
-        );
-        getActivePlayer();
-        playRound(row, column);
-        counter;
-        console.log(counter);
-        if (counter === 0) {
-          verdict = false;
-        }
-      }
-    };
+    // switchPlayer();
+    // printNewRound();
 
-    gameLoop(verdict);
-    switchPlayer();
-    printNewRound();
-
-    return { counter, tokenCounter };
+    // return { counter, tokenCounter };
   };
+  // const { counter, tokenCounter } = counterFunc(board.patternArr());
+  // console.log(counter, tokenCounter);
 
+  // const verdict = () => {
+  //   return prompt("Do you want to play?") ? "Y" === true : "N" === false;
+  // };
+  let counter = 0;
+
+  const gameLoop = (counter) => {
+    while (counter < 9) {
+      const row = Number(prompt("What row are you going to pick? (0, 1, 2)"));
+      const column = Number(
+        prompt("What column are you going to pick? (0, 1, 2)")
+      );
+      getActivePlayer();
+      playRound(row, column);
+      console.log(board.patternArr());
+
+      switchPlayer();
+      printNewRound();
+      counter++;
+    }
+  };
   printNewRound();
+  gameLoop(counter);
 
   return {
     playRound,
@@ -164,3 +168,28 @@ function GameController(playerOne = "Player One", playerTwo = "Player Two") {
 }
 
 GameController();
+
+// const consoleTest = () => {
+//   const gameLoop = (counter) => {
+//     let { counter, tokenCounter } = counterFunc(board.patternArr());
+//     let verdict = counter > tokenCounter ? true : false;
+
+//     gameLoop(verdict);
+//     while (counter) {
+//       const row = Number(prompt("What row are you going to pick? (0, 1, 2)"));
+//       const column = Number(
+//         prompt("What column are you going to pick? (0, 1, 2)")
+//       );
+//       getActivePlayer();
+//       playRound(row, column);
+
+//       // switchPlayer();
+//       // printNewRound();
+//       counter;
+//       console.log(counter);
+//       if (counter === 0) {
+//         verdict = false;
+//       }
+//     }
+//   };
+// };
