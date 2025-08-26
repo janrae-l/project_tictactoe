@@ -18,9 +18,13 @@ function Gameboard() {
 
     //   }
     // }
-    if (board[row][column] === "X" || board[row][column] === "O") {
-      //this needs to be revised
+    if (
+      board[row][column].getValue() === "X" ||
+      board[row][column].getValue() === "O"
+    ) {
       console.log("This cell is occupied");
+      //this works but it needs to ask for the row and column again then check if it is empty
+      return;
     } else {
       board[row][column].addToken(player);
     }
