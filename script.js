@@ -144,10 +144,11 @@ function GameController(playerOne = "Player One", playerTwo = "Player Two") {
   // const verdict = () => {
   //   return prompt("Do you want to play?") ? "Y" === true : "N" === false;
   // };
-  let counter = 0;
+  // let counter = 0;
 
-  const gameLoop = (counter) => {
-    while (counter < 9) {
+  const gameLoop = () => {
+    let play_game = true;
+    while (play_game) {
       const row = Number(prompt("What row are you going to pick? (0, 1, 2)"));
       const column = Number(
         prompt("What column are you going to pick? (0, 1, 2)")
@@ -158,11 +159,15 @@ function GameController(playerOne = "Player One", playerTwo = "Player Two") {
 
       switchPlayer();
       printNewRound();
-      counter++;
+      // counter++;
+      let response = prompt("Do you want to continue playing? yes/no");
+      if (response.toLowerCase() === "no") {
+        play_game = false;
+      }
     }
   };
   printNewRound();
-  gameLoop(counter);
+  gameLoop();
 
   return {
     playRound,
