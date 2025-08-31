@@ -23,6 +23,8 @@ function Gameboard() {
       board[row][column].getValue() === "O"
     ) {
       console.log("This cell is occupied");
+      return true;
+
       //this works but it needs to ask for the row and column again then check if it is empty
       return;
     } else {
@@ -43,7 +45,7 @@ function Gameboard() {
 
     ///it needs to get inside the testboard to get the array for the pattern
     for (let i = 0; i < board.length; i++) {
-      console.log(board[i]);
+      // console.log(board[i]);
       for (let j = 0; j < board[i].length; j++) {
         pattern.push(board[i][j].getValue());
       }
@@ -129,7 +131,9 @@ function GameController(playerOne = "Player One", playerTwo = "Player Two") {
       }'s token into row ${row}, column ${column}`
     );
 
-    board.dropToken(row, column, getActivePlayer().token);
+    if (board.dropToken(row, column, getActivePlayer().token) === true) {
+      console.log(board.dropToken(row, column, getActivePlayer().token));
+    }
 
     // board.patternArr();
 
