@@ -124,6 +124,18 @@ function GameController(playerOne = "Player One", playerTwo = "Player Two") {
 
   // consoleTest();
 
+  const getPlayerRowCol = () => {
+    let row = Number(prompt("What row are you going to pick? (0, 1, 2)"));
+    let column = Number(prompt("What column are you going to pick? (0, 1, 2)"));
+    while (board.dropToken(row, column, getActivePlayer()) === true) {
+      alert("The cell you chose is occupied! Pick another column/row again");
+      row = Number(prompt("What row are you going to pick? (0, 1, 2)"));
+      column = Number(prompt("What column are you going to pick? (0, 1, 2)"));
+    }
+
+    return { row, column };
+  };
+
   const playRound = (row, column) => {
     console.log(
       `Dropping ${
@@ -148,22 +160,20 @@ function GameController(playerOne = "Player One", playerTwo = "Player Two") {
   // const verdict = () => {
   //   return prompt("Do you want to play?") ? "Y" === true : "N" === false;
   // };
-  // let counter = 0;
+  let counter = 0;
 
   const gameLoop = () => {
     let play_game = true;
-    while (play_game) {
-      const row = Number(prompt("What row are you going to pick? (0, 1, 2)"));
-      const column = Number(
-        prompt("What column are you going to pick? (0, 1, 2)")
-      );
+    while (play_game && counter < 9) {
+      const { row, column } = getPlayerRowCol();
+
       getActivePlayer();
       playRound(row, column);
       console.log(board.patternArr());
 
       switchPlayer();
       printNewRound();
-      // counter++;
+      counter++;
       let response = prompt("Do you want to continue playing? yes/no");
       if (response.toLowerCase() === "no") {
         play_game = false;
