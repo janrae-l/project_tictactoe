@@ -123,10 +123,12 @@ function GameController(playerOne = "Player One", playerTwo = "Player Two") {
       } else if (i === 3) {
         if (board[3] === board[4] && board[4] === board[5]) {
           console.log(`${getActivePlayer().name}'s scores`);
-      }
-     } else if (i === 6) {
-      if (board[6] === board[7] && board[7] === board[8]) {
+        }
+      } else if (i === 6) {
+        if (board[6] === board[7] && board[7] === board[8]) {
           console.log(`${getActivePlayer().name}'s scores`);
+        }
+      }
     }
   };
 
