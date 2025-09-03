@@ -100,7 +100,35 @@ function GameController(playerOne = "Player One", playerTwo = "Player Two") {
     console.log(`${getActivePlayer().name}'s turn`);
   };
 
-  const winningPattern = (board) => {};
+  const winningPattern = (board) => {
+    for (let i = 0; i < board.length; i++) {
+      if (i === 0) {
+        if (board[i] === board[1] && board[1] === board[2]) {
+          console.log(`${getActivePlayer().name}'s scores`);
+        } else if (board[i] === board[4] && board[4] === board[8]) {
+          console.log(`${getActivePlayer().name}'s scores`);
+        } else if (board[i] === board[3] && board[3] === board[6]) {
+          console.log(`${getActivePlayer().name}'s scores`);
+        }
+      } else if (i === 1) {
+        if (board[1] === board[4] && board[4] === board[7]) {
+          console.log(`${getActivePlayer().name}'s scores`);
+        }
+      } else if (i === 2) {
+        if (board[2] === board[5] && board[5] === board[8]) {
+          console.log(`${getActivePlayer().name}'s scores`);
+        } else if (board[2] === board[4] && board[4] === board[6]) {
+          console.log(`${getActivePlayer().name}'s scores`);
+        }
+      } else if (i === 3) {
+        if (board[3] === board[4] && board[4] === board[5]) {
+          console.log(`${getActivePlayer().name}'s scores`);
+      }
+     } else if (i === 6) {
+      if (board[6] === board[7] && board[7] === board[8]) {
+          console.log(`${getActivePlayer().name}'s scores`);
+    }
+  };
 
   const counterFunc = (arr) => {
     let counter = 0;
