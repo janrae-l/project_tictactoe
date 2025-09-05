@@ -101,8 +101,10 @@ function GameController(playerOne = "Player One", playerTwo = "Player Two") {
   };
 
   const winningPattern = (board) => {
+    //the console.log needs to be changed into appending of scores
+    //in the corresponding object of the player
     for (let i = 0; i < board.length; i++) {
-      if (i === 0) {
+      if (i === 0 && (board[i] === "X" || board[i] === "O")) {
         if (board[i] === board[1] && board[1] === board[2]) {
           console.log(`${getActivePlayer().name}'s scores`);
         } else if (board[i] === board[4] && board[4] === board[8]) {
@@ -110,21 +112,21 @@ function GameController(playerOne = "Player One", playerTwo = "Player Two") {
         } else if (board[i] === board[3] && board[3] === board[6]) {
           console.log(`${getActivePlayer().name}'s scores`);
         }
-      } else if (i === 1) {
+      } else if (i === 1 && (board[i] === "X" || board[i] === "O")) {
         if (board[1] === board[4] && board[4] === board[7]) {
           console.log(`${getActivePlayer().name}'s scores`);
         }
-      } else if (i === 2) {
+      } else if (i === 2 && (board[i] === "X" || board[i] === "O")) {
         if (board[2] === board[5] && board[5] === board[8]) {
           console.log(`${getActivePlayer().name}'s scores`);
         } else if (board[2] === board[4] && board[4] === board[6]) {
           console.log(`${getActivePlayer().name}'s scores`);
         }
-      } else if (i === 3) {
+      } else if (i === 3 && (board[i] === "X" || board[i] === "O")) {
         if (board[3] === board[4] && board[4] === board[5]) {
           console.log(`${getActivePlayer().name}'s scores`);
         }
-      } else if (i === 6) {
+      } else if (i === 6 && (board[i] === "X" || board[i] === "O")) {
         if (board[6] === board[7] && board[7] === board[8]) {
           console.log(`${getActivePlayer().name}'s scores`);
         }
@@ -200,12 +202,13 @@ function GameController(playerOne = "Player One", playerTwo = "Player Two") {
       getActivePlayer();
       playRound(row, column);
       console.log(board.patternArr());
+      winningPattern(board.patternArr());
 
       switchPlayer();
       printNewRound();
       counter++;
       let response = prompt("Do you want to continue playing? yes/no");
-      if (response.toLowerCase() === "no") {
+      if (response.toLowerCase() === "no" || counter === 9) {
         play_game = false;
       }
     }
