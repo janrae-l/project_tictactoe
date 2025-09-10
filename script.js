@@ -100,12 +100,21 @@ function GameController(playerOne = "Player One", playerTwo = "Player Two") {
     console.log(`${getActivePlayer().name}'s turn`);
   };
 
+  const activatePattern = (toPrint) => {
+    let active = true;
+    while (active) {
+      console.log(toPrint);
+      active = false;
+    }
+  };
   const winningPattern = (board) => {
     //the console.log needs to be changed into appending of scores
     //in the corresponding object of the player
     for (let i = 0; i < board.length; i++) {
       if (i === 0 && (board[i] === "X" || board[i] === "O")) {
         if (board[i] === board[1] && board[1] === board[2]) {
+          console.log(`${getActivePlayer().name}'s scores`);
+
           console.log(`${getActivePlayer().name}'s scores`);
         } else if (board[i] === board[4] && board[4] === board[8]) {
           console.log(`${getActivePlayer().name}'s scores`);
