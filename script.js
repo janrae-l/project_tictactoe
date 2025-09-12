@@ -80,10 +80,12 @@ function GameController(playerOne = "Player One", playerTwo = "Player Two") {
     {
       name: playerOne,
       token: "X",
+      score: 0,
     },
     {
       name: playerTwo,
       token: "O",
+      score: 0,
     },
   ];
 
@@ -107,37 +109,122 @@ function GameController(playerOne = "Player One", playerTwo = "Player Two") {
       active = false;
     }
   };
+
+  const playerScore = () => {
+    if (board[i] === getActivePlayer().token) {
+      getActivePlayer().score++;
+      console.log(
+        `${getActivePlayer().name} has ${getActivePlayer().score} ${
+          getActivePlayer().score > 1 ? "scores" : "score"
+        }`
+      );
+    }
+  };
+
   const winningPattern = (board) => {
     //the console.log needs to be changed into appending of scores
     //in the corresponding object of the player
     for (let i = 0; i < board.length; i++) {
       if (i === 0 && (board[i] === "X" || board[i] === "O")) {
         if (board[i] === board[1] && board[1] === board[2]) {
-          console.log(`${getActivePlayer().name}'s scores`);
+          //but how will this verify if the score added is not repetitive?
+          //the score is now repetitive. How to fix this?
+          if (board[i] === getActivePlayer().token) {
+            getActivePlayer().score++;
+            console.log(
+              `${getActivePlayer().name} has ${getActivePlayer().score} ${
+                getActivePlayer().score > 1 ? "scores" : "score"
+              }`
+            );
+          }
+          // playerScore();
 
-          console.log(`${getActivePlayer().name}'s scores`);
+          //console.log(`${getActivePlayer().name}'s scores`);
         } else if (board[i] === board[4] && board[4] === board[8]) {
-          console.log(`${getActivePlayer().name}'s scores`);
+          // playerScore();
+          if (board[i] === getActivePlayer().token) {
+            getActivePlayer().score++;
+            console.log(
+              `${getActivePlayer().name} has ${getActivePlayer().score} ${
+                getActivePlayer().score > 1 ? "scores" : "score"
+              }`
+            );
+          }
+          //console.log(`${getActivePlayer().name}'s scores`);
         } else if (board[i] === board[3] && board[3] === board[6]) {
-          console.log(`${getActivePlayer().name}'s scores`);
+          // playerScore();
+          if (board[i] === getActivePlayer().token) {
+            getActivePlayer().score++;
+            console.log(
+              `${getActivePlayer().name} has ${getActivePlayer().score} ${
+                getActivePlayer().score > 1 ? "scores" : "score"
+              }`
+            );
+          }
+          //console.log(`${getActivePlayer().name}'s scores`);
         }
       } else if (i === 1 && (board[i] === "X" || board[i] === "O")) {
         if (board[1] === board[4] && board[4] === board[7]) {
-          console.log(`${getActivePlayer().name}'s scores`);
+          // playerScore();
+          if (board[i] === getActivePlayer().token) {
+            getActivePlayer().score++;
+            console.log(
+              `${getActivePlayer().name} has ${getActivePlayer().score} ${
+                getActivePlayer().score > 1 ? "scores" : "score"
+              }`
+            );
+          }
+          //console.log(`${getActivePlayer().name}'s scores`);
         }
       } else if (i === 2 && (board[i] === "X" || board[i] === "O")) {
         if (board[2] === board[5] && board[5] === board[8]) {
-          console.log(`${getActivePlayer().name}'s scores`);
+          // playerScore();
+          if (board[i] === getActivePlayer().token) {
+            getActivePlayer().score++;
+            console.log(
+              `${getActivePlayer().name} has ${getActivePlayer().score} ${
+                getActivePlayer().score > 1 ? "scores" : "score"
+              }`
+            );
+          }
+          //console.log(`${getActivePlayer().name}'s scores`);
         } else if (board[2] === board[4] && board[4] === board[6]) {
-          console.log(`${getActivePlayer().name}'s scores`);
+          // playerScore();
+          if (board[i] === getActivePlayer().token) {
+            getActivePlayer().score++;
+            console.log(
+              `${getActivePlayer().name} has ${getActivePlayer().score} ${
+                getActivePlayer().score > 1 ? "scores" : "score"
+              }`
+            );
+          }
+          //console.log(`${getActivePlayer().name}'s scores`);
         }
       } else if (i === 3 && (board[i] === "X" || board[i] === "O")) {
         if (board[3] === board[4] && board[4] === board[5]) {
-          console.log(`${getActivePlayer().name}'s scores`);
+          // playerScore();
+          if (board[i] === getActivePlayer().token) {
+            getActivePlayer().score++;
+            console.log(
+              `${getActivePlayer().name} has ${getActivePlayer().score} ${
+                getActivePlayer().score > 1 ? "scores" : "score"
+              }`
+            );
+          }
+          //console.log(`${getActivePlayer().name}'s scores`);
         }
       } else if (i === 6 && (board[i] === "X" || board[i] === "O")) {
         if (board[6] === board[7] && board[7] === board[8]) {
-          console.log(`${getActivePlayer().name}'s scores`);
+          // playerScore();
+          if (board[i] === getActivePlayer().token) {
+            getActivePlayer().score++;
+            console.log(
+              `${getActivePlayer().name} has ${getActivePlayer().score} ${
+                getActivePlayer().score > 1 ? "scores" : "score"
+              }`
+            );
+          }
+          //console.log(`${getActivePlayer().name}'s scores`);
         }
       }
     }
