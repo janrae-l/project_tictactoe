@@ -351,14 +351,14 @@ function GameController(playerOne = "Player One", playerTwo = "Player Two") {
 
   const playRound = (row, column) => {
     console.log(
-      `Dropping ${
-        getActivePlayer().name
-      }'s token into row ${row}, column ${column}`
+      `Dropping ${getActivePlayer().name}'s token into column ${column}`
     );
 
-    if (board.dropToken(row, column, getActivePlayer().token) === true) {
-      console.log(board.dropToken(row, column, getActivePlayer().token));
-    }
+    /* The winning pattern should be checked here and a winning message */
+
+    // if (board.dropToken(row, column, getActivePlayer().token) === true) {
+    //   console.log(board.dropToken(row, column, getActivePlayer().token));
+    // }
 
     // board.patternArr();
 
@@ -395,7 +395,7 @@ function GameController(playerOne = "Player One", playerTwo = "Player Two") {
     }
   };
   printNewRound();
-  gameLoop();
+  // gameLoop();
 
   return {
     playRound,
