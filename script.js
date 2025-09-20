@@ -430,3 +430,18 @@ GameController();
 //     }
 //   };
 // };
+
+const ScreenController = () => {
+  const game = GameController();
+  const playerTurnDiv = document.querySelector(".turn");
+  const boardDiv = document.querySelector(".board");
+
+  const updateScreen = () => (boardDiv.textContent = "");
+
+  const board = game.getBoard();
+  const activePlayer = game.getActivePlayer();
+
+  playerTurnDiv.textContent = `${activePlayer.name}'s turn...`;
+
+  //Need to figure out how to insert the row and column data into each cell
+};
