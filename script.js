@@ -444,4 +444,18 @@ const ScreenController = () => {
   playerTurnDiv.textContent = `${activePlayer.name}'s turn...`;
 
   //Need to figure out how to insert the row and column data into each cell
+  board.forEach((row, index) => {
+    let first = index;
+    row.forEach((cell, index) => {
+      const cellButton = document.createElement("button");
+      cellButton.classList.add("cell");
+
+      cellButton.dataset.row = first;
+      cellButton.dataset.column = index;
+      cellButton.textContent = cell.getValue();
+      boardDiv.appendChild(cellButton);
+    });
+  });
 };
+
+ScreenController();
