@@ -110,13 +110,16 @@ function GameController(playerOne = "Player One", playerTwo = "Player Two") {
     }
   };
 
-  const playerScore = () => {
-    getActivePlayer().scoreArr.push(pattern);
-    console.log(
-      `${getActivePlayer().name} has ${getActivePlayer().scoreArr.length} ${
-        getActivePlayer().scoreArr.length > 1 ? "scores" : "score"
-      }`
-    );
+  const playerScore = (pattern) => {
+    if (!getActivePlayer().scoreArr.includes(pattern)) {
+      // playerScore();
+      getActivePlayer().scoreArr.push(pattern);
+      console.log(
+        `${getActivePlayer().name} has ${getActivePlayer().scoreArr.length} ${
+          getActivePlayer().scoreArr.length > 1 ? "scores" : "score"
+        }`
+      );
+    }
   };
 
   const winningPattern = (board) => {
@@ -129,15 +132,16 @@ function GameController(playerOne = "Player One", playerTwo = "Player Two") {
           //the score is now repetitive. How to fix this?
           if (board[i] === getActivePlayer().token) {
             let pattern = "012";
-            if (!getActivePlayer().scoreArr.includes(pattern)) {
-              // playerScore();
-              getActivePlayer().scoreArr.push(pattern);
-              console.log(
-                `${getActivePlayer().name} has ${
-                  getActivePlayer().scoreArr.length
-                } ${getActivePlayer().scoreArr.length > 1 ? "scores" : "score"}`
-              );
-            }
+            playerScore(pattern);
+            // if (!getActivePlayer().scoreArr.includes(pattern)) {
+            //   // playerScore();
+            //   getActivePlayer().scoreArr.push(pattern);
+            //   console.log(
+            //     `${getActivePlayer().name} has ${
+            //       getActivePlayer().scoreArr.length
+            //     } ${getActivePlayer().scoreArr.length > 1 ? "scores" : "score"}`
+            //   );
+            // }
           }
           // playerScore();
 
@@ -146,71 +150,73 @@ function GameController(playerOne = "Player One", playerTwo = "Player Two") {
           // playerScore();
           if (board[i] === getActivePlayer().token) {
             let pattern = "048";
-            if (!getActivePlayer().scoreArr.includes(pattern)) {
-              // playerScore();
+            playerScore(pattern);
+            // if (!getActivePlayer().scoreArr.includes(pattern)) {
+            //   // playerScore();
 
-              getActivePlayer().scoreArr.push(pattern);
-              console.log(
-                `${getActivePlayer().name} has ${
-                  getActivePlayer().scoreArr.length
-                } ${getActivePlayer().scoreArr.length > 1 ? "scores" : "score"}`
-              );
+            //   getActivePlayer().scoreArr.push(pattern);
+            //   console.log(
+            //     `${getActivePlayer().name} has ${
+            //       getActivePlayer().scoreArr.length
+            //     } ${getActivePlayer().scoreArr.length > 1 ? "scores" : "score"}`
+            //   );
 
-              // getActivePlayer().score++;
-              // console.log(
-              //   `${getActivePlayer().name} has ${getActivePlayer().score} ${
-              //     getActivePlayer().score > 1 ? "scores" : "score"
-              //   }`
-              // );
-            }
-            //console.log(`${getActivePlayer().name}'s scores`);
+            // getActivePlayer().score++;
+            // console.log(
+            //   `${getActivePlayer().name} has ${getActivePlayer().score} ${
+            //     getActivePlayer().score > 1 ? "scores" : "score"
+            //   }`
+            // );
           }
-        } else if (board[i] === board[3] && board[3] === board[6]) {
-          // playerScore();
-          if (board[i] === getActivePlayer().token) {
-            let pattern = "036";
-            if (!getActivePlayer().scoreArr.includes(pattern)) {
-              // playerScore();
+          //console.log(`${getActivePlayer().name}'s scores`);
+        }
+      } else if (board[i] === board[3] && board[3] === board[6]) {
+        // playerScore();
+        if (board[i] === getActivePlayer().token) {
+          let pattern = "036";
+          playerScore(pattern);
+          // if (!getActivePlayer().scoreArr.includes(pattern)) {
+          //   // playerScore();
 
-              getActivePlayer().scoreArr.push(pattern);
-              console.log(
-                `${getActivePlayer().name} has ${
-                  getActivePlayer().scoreArr.length
-                } ${getActivePlayer().scoreArr.length > 1 ? "scores" : "score"}`
-              );
+          //   getActivePlayer().scoreArr.push(pattern);
+          //   console.log(
+          //     `${getActivePlayer().name} has ${
+          //       getActivePlayer().scoreArr.length
+          //     } ${getActivePlayer().scoreArr.length > 1 ? "scores" : "score"}`
+          //   );}
 
-              // getActivePlayer().score++;
-              // console.log(
-              //   `${getActivePlayer().name} has ${getActivePlayer().score} ${
-              //     getActivePlayer().score > 1 ? "scores" : "score"
-              //   }`
-              // );
-            }
-            //console.log(`${getActivePlayer().name}'s scores`);
-          }
+          // getActivePlayer().score++;
+          // console.log(
+          //   `${getActivePlayer().name} has ${getActivePlayer().score} ${
+          //     getActivePlayer().score > 1 ? "scores" : "score"
+          //   }`
+          // );
+
+          //console.log(`${getActivePlayer().name}'s scores`);
         }
       } else if (i === 1 && (board[i] === "X" || board[i] === "O")) {
         if (board[1] === board[4] && board[4] === board[7]) {
           // playerScore();
           if (board[i] === getActivePlayer().token) {
             let pattern = "147";
-            if (!getActivePlayer().scoreArr.includes(pattern)) {
-              // playerScore();
+            playerScore(pattern);
+            // if (!getActivePlayer().scoreArr.includes(pattern)) {
+            //   // playerScore();
 
-              getActivePlayer().scoreArr.push(pattern);
-              console.log(
-                `${getActivePlayer().name} has ${
-                  getActivePlayer().scoreArr.length
-                } ${getActivePlayer().scoreArr.length > 1 ? "scores" : "score"}`
-              );
+            //   getActivePlayer().scoreArr.push(pattern);
+            //   console.log(
+            //     `${getActivePlayer().name} has ${
+            //       getActivePlayer().scoreArr.length
+            //     } ${getActivePlayer().scoreArr.length > 1 ? "scores" : "score"}`
+            //   );}
 
-              // getActivePlayer().score++;
-              // console.log(
-              //   `${getActivePlayer().name} has ${getActivePlayer().score} ${
-              //     getActivePlayer().score > 1 ? "scores" : "score"
-              //   }`
-              // );
-            }
+            // getActivePlayer().score++;
+            // console.log(
+            //   `${getActivePlayer().name} has ${getActivePlayer().score} ${
+            //     getActivePlayer().score > 1 ? "scores" : "score"
+            //   }`
+            // );
+
             //console.log(`${getActivePlayer().name}'s scores`);
           }
         }
@@ -219,46 +225,48 @@ function GameController(playerOne = "Player One", playerTwo = "Player Two") {
           // playerScore();
           if (board[i] === getActivePlayer().token) {
             let pattern = "258";
-            if (!getActivePlayer().scoreArr.includes(pattern)) {
-              // playerScore();
+            playerScore(pattern);
+            // if (!getActivePlayer().scoreArr.includes(pattern)) {
+            //   // playerScore();
 
-              getActivePlayer().scoreArr.push(pattern);
-              console.log(
-                `${getActivePlayer().name} has ${
-                  getActivePlayer().scoreArr.length
-                } ${getActivePlayer().scoreArr.length > 1 ? "scores" : "score"}`
-              );
+            //   getActivePlayer().scoreArr.push(pattern);
+            //   console.log(
+            //     `${getActivePlayer().name} has ${
+            //       getActivePlayer().scoreArr.length
+            //     } ${getActivePlayer().scoreArr.length > 1 ? "scores" : "score"}`
+            //   );}
 
-              // getActivePlayer().score++;
-              // console.log(
-              //   `${getActivePlayer().name} has ${getActivePlayer().score} ${
-              //     getActivePlayer().score > 1 ? "scores" : "score"
-              //   }`
-              // );
-            }
+            // getActivePlayer().score++;
+            // console.log(
+            //   `${getActivePlayer().name} has ${getActivePlayer().score} ${
+            //     getActivePlayer().score > 1 ? "scores" : "score"
+            //   }`
+            // );
+
             //console.log(`${getActivePlayer().name}'s scores`);
           }
         } else if (board[2] === board[4] && board[4] === board[6]) {
           // playerScore();
           if (board[i] === getActivePlayer().token) {
             let pattern = "246";
-            if (!getActivePlayer().scoreArr.includes(pattern)) {
-              // playerScore();
+            playerScore(pattern);
+            // if (!getActivePlayer().scoreArr.includes(pattern)) {
+            //   // playerScore();
 
-              getActivePlayer().scoreArr.push(pattern);
-              console.log(
-                `${getActivePlayer().name} has ${
-                  getActivePlayer().scoreArr.length
-                } ${getActivePlayer().scoreArr.length > 1 ? "scores" : "score"}`
-              );
+            //   getActivePlayer().scoreArr.push(pattern);
+            //   console.log(
+            //     `${getActivePlayer().name} has ${
+            //       getActivePlayer().scoreArr.length
+            //     } ${getActivePlayer().scoreArr.length > 1 ? "scores" : "score"}`
+            //   );}
 
-              // getActivePlayer().score++;
-              // console.log(
-              //   `${getActivePlayer().name} has ${getActivePlayer().score} ${
-              //     getActivePlayer().score > 1 ? "scores" : "score"
-              //   }`
-              // );
-            }
+            // getActivePlayer().score++;
+            // console.log(
+            //   `${getActivePlayer().name} has ${getActivePlayer().score} ${
+            //     getActivePlayer().score > 1 ? "scores" : "score"
+            //   }`
+            // );
+
             //console.log(`${getActivePlayer().name}'s scores`);
           }
         }
@@ -267,23 +275,24 @@ function GameController(playerOne = "Player One", playerTwo = "Player Two") {
           // playerScore();
           if (board[i] === getActivePlayer().token) {
             let pattern = "345";
-            if (!getActivePlayer().scoreArr.includes(pattern)) {
-              // playerScore();
+            playerScore(pattern);
+            // if (!getActivePlayer().scoreArr.includes(pattern)) {
+            //   // playerScore();
 
-              getActivePlayer().scoreArr.push(pattern);
-              console.log(
-                `${getActivePlayer().name} has ${
-                  getActivePlayer().scoreArr.length
-                } ${getActivePlayer().scoreArr.length > 1 ? "scores" : "score"}`
-              );
+            //   getActivePlayer().scoreArr.push(pattern);
+            //   console.log(
+            //     `${getActivePlayer().name} has ${
+            //       getActivePlayer().scoreArr.length
+            //     } ${getActivePlayer().scoreArr.length > 1 ? "scores" : "score"}`
+            //   );}
 
-              // getActivePlayer().score++;
-              // console.log(
-              //   `${getActivePlayer().name} has ${getActivePlayer().score} ${
-              //     getActivePlayer().score > 1 ? "scores" : "score"
-              //   }`
-              // );
-            }
+            // getActivePlayer().score++;
+            // console.log(
+            //   `${getActivePlayer().name} has ${getActivePlayer().score} ${
+            //     getActivePlayer().score > 1 ? "scores" : "score"
+            //   }`
+            // );
+
             //console.log(`${getActivePlayer().name}'s scores`);
           }
         }
@@ -292,23 +301,24 @@ function GameController(playerOne = "Player One", playerTwo = "Player Two") {
           // playerScore();
           if (board[i] === getActivePlayer().token) {
             let pattern = "678";
-            if (!getActivePlayer().scoreArr.includes(pattern)) {
-              // playerScore();
+            playerScore(pattern);
+            // if (!getActivePlayer().scoreArr.includes(pattern)) {
+            //   // playerScore();
 
-              getActivePlayer().scoreArr.push(pattern);
-              console.log(
-                `${getActivePlayer().name} has ${
-                  getActivePlayer().scoreArr.length
-                } ${getActivePlayer().scoreArr.length > 1 ? "scores" : "score"}`
-              );
+            //   getActivePlayer().scoreArr.push(pattern);
+            //   console.log(
+            //     `${getActivePlayer().name} has ${
+            //       getActivePlayer().scoreArr.length
+            //     } ${getActivePlayer().scoreArr.length > 1 ? "scores" : "score"}`
+            //   );}
 
-              // getActivePlayer().score++;
-              // console.log(
-              //   `${getActivePlayer().name} has ${getActivePlayer().score} ${
-              //     getActivePlayer().score > 1 ? "scores" : "score"
-              //   }`
-              // );
-            }
+            // getActivePlayer().score++;
+            // console.log(
+            //   `${getActivePlayer().name} has ${getActivePlayer().score} ${
+            //     getActivePlayer().score > 1 ? "scores" : "score"
+            //   }`
+            // );
+
             //console.log(`${getActivePlayer().name}'s scores`);
           }
         }
@@ -351,7 +361,9 @@ function GameController(playerOne = "Player One", playerTwo = "Player Two") {
 
   const playRound = (row, column) => {
     console.log(
-      `Dropping ${getActivePlayer().name}'s token into column ${column}`
+      `Dropping ${
+        getActivePlayer().name
+      }'s token into row ${row} column ${column}`
     );
 
     /* The winning pattern should be checked here and a winning message */
@@ -360,10 +372,12 @@ function GameController(playerOne = "Player One", playerTwo = "Player Two") {
     //   console.log(board.dropToken(row, column, getActivePlayer().token));
     // }
 
-    // board.patternArr();
+    board.dropToken(row, column, getActivePlayer().token);
+    board.patternArr();
+    winningPattern(board.patternArr());
 
-    // switchPlayer();
-    // printNewRound();
+    switchPlayer();
+    printNewRound();
 
     // return { counter, tokenCounter };
   };
@@ -436,26 +450,42 @@ const ScreenController = () => {
   const playerTurnDiv = document.querySelector(".turn");
   const boardDiv = document.querySelector(".board");
 
-  const updateScreen = () => (boardDiv.textContent = "");
+  const updateScreen = () => {
+    boardDiv.textContent = "";
 
-  const board = game.getBoard();
-  const activePlayer = game.getActivePlayer();
+    const board = game.getBoard();
+    const activePlayer = game.getActivePlayer();
 
-  playerTurnDiv.textContent = `${activePlayer.name}'s turn...`;
+    playerTurnDiv.textContent = `${activePlayer.name}'s turn...`;
 
-  //Need to figure out how to insert the row and column data into each cell
-  board.forEach((row, index) => {
-    let first = index;
-    row.forEach((cell, index) => {
-      const cellButton = document.createElement("button");
-      cellButton.classList.add("cell");
+    //Need to figure out how to insert the row and column data into each cell
+    board.forEach((row, index) => {
+      let first = index;
+      row.forEach((cell, index) => {
+        const cellButton = document.createElement("button");
+        cellButton.classList.add("cell");
 
-      cellButton.dataset.row = first;
-      cellButton.dataset.column = index;
-      cellButton.textContent = cell.getValue();
-      boardDiv.appendChild(cellButton);
+        cellButton.dataset.row = first;
+        cellButton.dataset.column = index;
+        cellButton.textContent = cell.getValue();
+        boardDiv.appendChild(cellButton);
+      });
     });
-  });
+  };
+
+  function clickHandlerBoard(e) {
+    const selectedColumn = e.target.dataset.column;
+    const selectedRow = e.target.dataset.row;
+    console.log(selectedColumn, selectedRow);
+
+    if (!selectedColumn) return;
+
+    game.playRound(selectedRow, selectedColumn);
+    updateScreen();
+  }
+  boardDiv.addEventListener("click", clickHandlerBoard);
+
+  updateScreen();
 };
 
 ScreenController();
