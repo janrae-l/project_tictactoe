@@ -472,6 +472,8 @@ const ScreenController = () => {
       });
     });
   };
+  const playerOneScore = document.querySelector(".player-one");
+  const playerTwoScore = document.querySelector(".player-two");
 
   function clickHandlerBoard(e) {
     const selectedColumn = e.target.dataset.column;
@@ -481,6 +483,18 @@ const ScreenController = () => {
     if (!selectedColumn) return;
 
     game.playRound(selectedRow, selectedColumn);
+
+    //the is an error in how to display the score
+    playerOneScore.textContent = `${
+      game.players[0].scoreArr.length === 0
+        ? "0"
+        : game.players[0].scoreArr.length
+    }`;
+    playerTwoScore.textContent = `${
+      game.players[1].scoreArr.length === 0
+        ? "0"
+        : game.players[1].scoreArr.length
+    }`;
     updateScreen();
   }
   boardDiv.addEventListener("click", clickHandlerBoard);
