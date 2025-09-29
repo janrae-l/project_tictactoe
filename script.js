@@ -81,11 +81,13 @@ function GameController(playerOne = "Player One", playerTwo = "Player Two") {
       name: playerOne,
       token: "X",
       scoreArr: [],
+      score: 0,
     },
     {
       name: playerTwo,
       token: "O",
       scoreArr: [],
+      score: 0,
     },
   ];
 
@@ -113,7 +115,9 @@ function GameController(playerOne = "Player One", playerTwo = "Player Two") {
   const playerScore = (pattern) => {
     if (!getActivePlayer().scoreArr.includes(pattern)) {
       // playerScore();
+      getActivePlayer().score++;
       getActivePlayer().scoreArr.push(pattern);
+
       console.log(
         `${getActivePlayer().name} has ${getActivePlayer().scoreArr.length} ${
           getActivePlayer().scoreArr.length > 1 ? "scores" : "score"
@@ -359,6 +363,9 @@ function GameController(playerOne = "Player One", playerTwo = "Player Two") {
     return { row, column };
   };
 
+  const returnPlayer = () => {
+    return players;
+  };
   const playRound = (row, column) => {
     console.log(
       `Dropping ${
@@ -415,10 +422,9 @@ function GameController(playerOne = "Player One", playerTwo = "Player Two") {
     playRound,
     getActivePlayer,
     getBoard: board.getBoard,
+    returnPlayer,
   };
 }
-
-GameController();
 
 // const consoleTest = () => {
 //   const gameLoop = (counter) => {
@@ -486,14 +492,16 @@ const ScreenController = () => {
 
     //the is an error in how to display the score
     playerOneScore.textContent = `${
-      game.players[0].scoreArr.length === 0
-        ? "0"
-        : game.players[0].scoreArr.length
+      // game.players[0].scoreArr.length === 0
+      //   ? "0"
+      //   : game.players[0].scoreArr.length
+      game.returnPlayer().players[0].score
     }`;
     playerTwoScore.textContent = `${
-      game.players[1].scoreArr.length === 0
-        ? "0"
-        : game.players[1].scoreArr.length
+      // game.players[1].scoreArr.length === 0
+      //   ? "0"
+      //   : game.players[1].scoreArr.length
+      game.returnPlayer().players[1].score
     }`;
     updateScreen();
   }
