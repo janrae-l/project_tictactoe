@@ -82,12 +82,18 @@ function GameController(playerOne = "Player One", playerTwo = "Player Two") {
       token: "X",
       scoreArr: [],
       score: 0,
+      addScore: function () {
+        this.score++;
+      },
     },
     {
       name: playerTwo,
       token: "O",
       scoreArr: [],
       score: 0,
+      addScore: function () {
+        this.score++;
+      },
     },
   ];
 
@@ -112,10 +118,16 @@ function GameController(playerOne = "Player One", playerTwo = "Player Two") {
     }
   };
 
+  const retrieveScore = (player) => {
+    console.log(player.score);
+    return player.score;
+  };
+
   const playerScore = (pattern) => {
     if (!getActivePlayer().scoreArr.includes(pattern)) {
       // playerScore();
-      getActivePlayer().score++;
+      getActivePlayer().addScore();
+      console.log(retrieveScore(getActivePlayer()));
       getActivePlayer().scoreArr.push(pattern);
 
       console.log(
@@ -423,6 +435,7 @@ function GameController(playerOne = "Player One", playerTwo = "Player Two") {
     getActivePlayer,
     getBoard: board.getBoard,
     returnPlayer,
+    retrieveScore,
   };
 }
 
@@ -492,16 +505,18 @@ const ScreenController = () => {
 
     //the is an error in how to display the score
     playerOneScore.textContent = `${
+      game.retrieveScore(player[0])
       // game.players[0].scoreArr.length === 0
       //   ? "0"
       //   : game.players[0].scoreArr.length
-      game.returnPlayer().players[0].score
+      // game.returnPlayer().players[0].score
     }`;
     playerTwoScore.textContent = `${
+      game.retrieveScore(player[1])
       // game.players[1].scoreArr.length === 0
       //   ? "0"
       //   : game.players[1].scoreArr.length
-      game.returnPlayer().players[1].score
+      // game.returnPlayer().players[1].score
     }`;
     updateScreen();
   }
