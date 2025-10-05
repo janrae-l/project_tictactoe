@@ -22,8 +22,8 @@ function Gameboard() {
       board[row][column].getValue() === "X" ||
       board[row][column].getValue() === "O"
     ) {
-      console.log("This cell is occupied");
-      return true;
+      //console.log("This cell is occupied");
+      return;
 
       //this works but it needs to ask for the row and column again then check if it is empty
       return;
@@ -118,16 +118,16 @@ function GameController(playerOne = "Player One", playerTwo = "Player Two") {
     }
   };
 
-  const retrieveScore = (player) => {
-    console.log(player.score);
-    return player.score;
+  const retrieveScore = (number) => {
+    //console.log(players[number].score);
+    return players[number].score;
   };
 
   const playerScore = (pattern) => {
     if (!getActivePlayer().scoreArr.includes(pattern)) {
       // playerScore();
       getActivePlayer().addScore();
-      console.log(retrieveScore(getActivePlayer()));
+      //console.log(retrieveScore(getActivePlayer()));
       getActivePlayer().scoreArr.push(pattern);
 
       console.log(
@@ -505,14 +505,14 @@ const ScreenController = () => {
 
     //the is an error in how to display the score
     playerOneScore.textContent = `${
-      game.retrieveScore(player[0])
+      game.retrieveScore(Number(0))
       // game.players[0].scoreArr.length === 0
       //   ? "0"
       //   : game.players[0].scoreArr.length
       // game.returnPlayer().players[0].score
     }`;
     playerTwoScore.textContent = `${
-      game.retrieveScore(player[1])
+      game.retrieveScore(Number(1))
       // game.players[1].scoreArr.length === 0
       //   ? "0"
       //   : game.players[1].scoreArr.length
