@@ -23,10 +23,12 @@ function Gameboard() {
       board[row][column].getValue() === "O"
     ) {
       //console.log("This cell is occupied");
-      return;
-
+      //return;
       //this works but it needs to ask for the row and column again then check if it is empty
-      return;
+      //return;
+      /* opt 1 There should be a dialog box that notifies that the cell is occupied
+opt 2 the already occupied cell needs to be disabled
+*/
     } else {
       board[row][column].addToken(player);
     }
